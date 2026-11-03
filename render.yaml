@@ -1,0 +1,28 @@
+# Anywhen domain deployment. Secret keys are supplied securely in Render.
+services:
+  - type: web
+    name: anywhenai
+    runtime: node
+    plan: 0.5c-512mb
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_ORIGIN
+        value: https://anywhenai.online
+      - key: DATABASE_PATH
+        value: /var/data/anywhen.db
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-5-5
+      - key: ENABLE_WEB_SEARCH
+        value: '1'
+      - key: DAILY_GENERATION_LIMIT
+        value: '20'
+      - key: ANTHROPIC_API_KEY
+        sync: false
+    disk:
+      name: anywhen-data
+      mountPath: /var/data
+      sizeGB: 1

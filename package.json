@@ -1,0 +1,16 @@
+{
+  "name": "anywhen",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "An immersive, Claude-powered fictional simulation experience",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.4.0"
+  }
+}
